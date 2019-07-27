@@ -1,0 +1,19 @@
+hallway_lights_timer:
+  name: Выключение через
+  duration: 00:01:20
+
+entrance_lights_timer:
+  name: Выключение через
+  duration: 00:01:20
+
+kitchen_lights_timer:
+  name: Выключение через
+  duration: 00:01:20
+
+bedroom_closet_lights_timer:
+  name: Выключение через
+  duration: 00:00:30
+
+bathroom_lights_timer:
+  name: Выключение через
+  duration: 00:01:00

@@ -1,0 +1,7 @@
+- platform: flux_led
+  automatic_add: True
+  devices:
+    192.168.1.25:
+      name: kitchen_led_strip
+    # 192.168.1.41:
+    #   name: bedroom_closet_led_strip

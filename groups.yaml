@@ -1,0 +1,58 @@
+default_view:
+    view: yes
+    entities:
+        - group.living_room
+        - group.kitchen
+        - group.hallway
+        - group.entrance
+        - group.bathroom
+    
+living_room:
+    name: Гостинная
+    entities:
+        - light.living_room_lights
+        - light.living_room_tv_lights
+        - light.living_room_table_light
+        - switch.wall_switch_right_158d000215287d
+        - switch.wall_switch_left_158d000215287d
+
+hallway:
+    name: Корридор
+    entities:
+        - light.hallway
+        - timer.hallway_lights_timer
+        - input_number.hallway_lights_duration
+        - input_number.hallway_lights_brightness
+
+entrance:
+    name: Прихожая
+    entities:
+        - light.entrance
+        - timer.entrance_lights_timer
+        - input_number.entrance_lights_duration
+        - input_number.entrance_lights_brightness
+
+kitchen:
+    name: Кухня
+    entities:
+        - light.kitchen_led_strip
+        - timer.kitchen_lights_timer
+        - input_number.kitchen_lights_duration
+        - input_number.kitchen_lights_brightness
+
+# bathroom:
+#     name: Ванная
+#     entities:
+#         - light.bathroom
+#         - timer.bathroom_lights_timer
+#         - input_number.bathroom_lights_brightness
+#         - input_number.bathroom_lights_color_temp
+#         - input_number.bathroom_lights_duration
+
+# bedroom_closet:
+#     name: Шкаф спальня
+#     entities:
+#         - light.bedroom_closet_led_strip
+#         - timer.bedroom_closet_lights_timer
+#         - input_number.bedroom_closet_lights_duration
+#         - input_number.bedroom_closet_lights_brightness

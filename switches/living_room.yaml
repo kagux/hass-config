@@ -1,0 +1,22 @@
+# - platform: broadlink
+#   friendly_name: Living Room IR/RF Switch
+#   host: 192.168.1.26
+#   mac: '78:0F:77:5A:BB:CD'
+#   switches:
+#     receiver_onkyo_power:
+#       friendly_name: "Onkyo AV Питание"
+#       command_on: 'JgBYAAABJ5USExI3ExISExI4ERMSOBI3EzcTEhI3EzcTEhI3EzcSExETExISOBITEhISExITEhMSNxM3EhMROBI4EjcTNxM3EQAFBAABJ0sSAAxaAAEnSxMADQU='
+#       command_off: 'JgBQAAABJ5USEhM3ExISExE4EhMSOBE4EzcRExI4EzcRExI4EzcSEhMSEhMSNxMSEhMTEhITERMSOBI4EhITNxI3EzcTNxI3EgAFAwABJ0sTAA0FAAAAAAAAAAA='
+#     receiver_onkyo_volume_up:
+#       friendly_name: "Onkyo AV Громче"
+#       command_on: 'JgCQAAABJ5UTEhM3EhISExM3ERQSNxM3ETgTEhM3EjcTEhI4EjcTEhITETgSExITEhMSEhMSEhMTNxISEzcSNxI4EzcSNxM3EgAFAwABJ5UTEhI3ExISExI4ERMTNxI3EzcTEhI3EzcTEhI3EjgSExISEzcTEhITEhISExITExIROBMSEjgSNxM3EjcTNxM3EQANBQAAAAAAAAAA'
+#     receiver_onkyo_volume_down:
+#       friendly_name: "Onkyo AV Тише"
+#       command_on: 'JgCQAAABJ5USExI3EhMSExI4ERMSOBM3ETgTEhI4ETgSExI3EjgSExE4EjgSExETEhMSExITEhMSEhITEjgROBI4EjcSOBI4EQAFBAABJ5USExE4EhMSExI3EhMSOBI3EjgSExE4EjgRExI4EjgSEhI4EjYTExITEhMSExETEhMSExITEjcSOBI4ETgTNxE4EgANBQAAAAAAAAAA'
+#     receiver_onkyo_music:
+#       friendly_name: "Onkyo AV Music"
+#       command_on: 'JgBYAAABJ5USEhM3EhMSExE4ExISOBE4EjgRFBE4EzcSEhI4EjgRExI4EhMSExE4ExISExETEhMSExI4ETgTEhI3EjgTNxI3EwAFAgABJ0sTAAxZAAEnSxMADQU='
+#     receiver_onkyo_tv:
+#       friendly_name: "Onkyo AV TV"
+#       command_on: 'JgBYAAABJ5UTEhE4ExISExI3EhMTNxI3EhMSExI4ETgSExI3EzcTEhITEhISOBI4ERMTEhITEjcSOBM3EhISExI4EjcSOBITEQAFKQABJ0sSAAxaAAEnSxEADQU='
+

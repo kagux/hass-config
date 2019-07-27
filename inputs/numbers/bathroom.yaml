@@ -1,0 +1,24 @@
+bathroom_lights_duration:
+  name: Таймер
+  icon: mdi:clock-start
+  initial: 60
+  min: 60
+  max: 600
+  step: 10
+  unit_of_measurement: c
+
+bathroom_lights_brightness:
+  name: Яркость
+  icon: mdi:brightness-7
+  initial: 60
+  min: 10
+  max: 100
+  step: 10
+
+bathroom_lights_color_temp:
+  name: Темп. Света
+  icon: mdi:thermometer
+  initial: 300
+  min: 153
+  max: 370
+  step: 10

@@ -1,0 +1,33 @@
+- platform: yeelight
+  # scan_interval: 2
+  devices:
+    192.168.1.38:
+      name: living_room_tv_light_left
+      save_on_change: true
+      transition: 0
+      model: mono1
+      use_music_mode: true
+    192.168.1.37:
+      name: living_room_tv_light_right
+      save_on_change: true
+      transition: 0
+      model: mono1
+      use_music_mode: true
+    192.168.1.36:
+      name: living_room_table_light
+      save_on_change: true
+      transition: 0
+      model: mono1
+      use_music_mode: true
+
+- platform: group
+  name: living_room_tv_lights
+  entities:
+    - light.living_room_tv_light_left
+    - light.living_room_tv_light_right
+
+- platform: group
+  name: living_room_lights
+  entities:
+    - light.living_room_tv_lights
+    - light.living_room_table_light

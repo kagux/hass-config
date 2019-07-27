@@ -1,0 +1,4 @@
+- platform: tod
+  name: is_bedtime
+  after: '21:30'
+  before: '07:30'

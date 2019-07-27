@@ -1,0 +1,22 @@
+- platform: yeelight
+  # scan_interval: 2
+  devices:
+    192.168.1.8:
+      name: bathroom_1
+      save_on_change: true
+      transition: 0
+      model: mono1
+      use_music_mode: true
+    192.168.1.11:
+      name: bathroom_2
+      save_on_change: true
+      transition: 0
+      model: mono1
+      use_music_mode: true
+
+
+- platform: group
+  name: bathroom
+  entities:
+    - light.bathroom_1
+    - light.bathroom_2

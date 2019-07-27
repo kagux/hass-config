@@ -1,0 +1,16 @@
+bedroom_closet_lights_duration:
+  name: Таймер
+  icon: mdi:clock-start
+  initial: 30
+  min: 30
+  max: 120
+  step: 10
+  unit_of_measurement: c
+
+bedroom_closet_lights_brightness:
+  name: Яркость
+  icon: mdi:brightness-7
+  initial: 10
+  min: 10
+  max: 100
+  step: 10

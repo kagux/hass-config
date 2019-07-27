@@ -1,0 +1,97 @@
+# - alias: Turn off bathroom lights
+#   trigger:
+#     - platform: event
+#       event_type: xiaomi_aqara.click
+#       event_data:
+#         entity_id: binary_sensor.wall_switch_158d00028f8108
+#   condition:
+#     - condition: state 
+#       entity_id: light.bathroom
+#       state: 'on'
+#   action:
+#     - service: light.turn_off
+#       data:
+#         transition: 0
+#         entity_id: light.bathroom
+
+# - alias: Turn on bathroom lights on door or wall switch
+#   trigger:
+#     - platform: event
+#       event_type: xiaomi_aqara.click
+#       event_data:
+#         entity_id: binary_sensor.wall_switch_158d00028f8108
+#     - platform: state
+#       entity_id: binary_sensor.door_window_sensor_158d000237c961
+#       to: 'on'
+#   condition:
+#     - condition: state 
+#       entity_id: light.bathroom
+#       state: 'off'
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id: light.bathroom
+
+# - alias: Turn on bathroom lights on motion
+#   trigger:
+#     - platform: state
+#       entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+#       to: '8'
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id: light.bathroom
+
+# - alias: Adjust bathroom lights brightness and color temperature
+#   trigger:
+#     - platform: state
+#       entity_id: input_number.bathroom_lights_brightness
+#     - platform: state
+#       entity_id: input_number.bathroom_lights_color_temp
+#   condition:
+#     - condition: state 
+#       entity_id: light.bathroom
+#       state: 'on'
+#   action:
+#     - service: light.turn_on
+#       data:
+#         entity_id: light.bathroom
+
+# - alias: Set lights settings when turning on and start timer
+#   trigger:
+#     - platform: event
+#       event_type: call_service
+#       event_data:
+#         domain: light
+#         service: turn_on
+#         service_data:
+#           entity_id: light.bathroom
+#   condition:
+#     condition: template
+#     value_template: "{{ trigger.event.data.service_data.brightness_pct is not defined }}"
+#   action:
+#     - service: light.turn_on
+#       data_template:
+#         entity_id: light.bathroom
+#         transition: 0
+#         brightness_pct: >
+#             {{ states('input_number.bathroom_lights_brightness') | int }}
+#         color_temp: >
+#             {{ states('input_number.bathroom_lights_color_temp') | int }}
+#     - service: timer.cancel
+#       entity_id: timer.bathroom_lights_timer
+#     - service: timer.start
+#       data_template:
+#         entity_id: timer.bathroom_lights_timer
+#         duration: >
+#           {{ states('input_number.bathroom_lights_duration') | int | timestamp_custom('%X',false) }}
+
+# - alias: Turn off bathroom lights when timer expires
+#   trigger:
+#     platform: event
+#     event_type: timer.finished
+#     event_data:
+#        entity_id: timer.bathroom_lights_timer
+#   action:
+#     service: light.turn_off
+#     entity_id: light.bathroom

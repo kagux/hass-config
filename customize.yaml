@@ -1,0 +1,88 @@
+# Hallway
+binary_sensor.motion_sensor_158d0001e0b206:
+  friendly_name: Hallway Door Motion Sensor
+
+sensor.illumination_158d0001e0b206:
+  friendly_name: Hallway Illimunation Sensor
+
+binary_sensor.door_window_sensor_158d00022cd78d:
+  friendly_name: Hallway Door Sensor
+
+light.hallway:
+  friendly_name: Свет
+
+# Entrance
+binary_sensor.motion_sensor_158d0001e0ad52:
+  friendly_name: Entrance Motion Sensor
+
+light.entrance:
+  friendly_name: Свет
+
+sensor.illumination_158d0001e0ad52:
+  friendly_name: Entrance Illimunation Sensor
+
+# Bedroom
+binary_sensor.motion_sensor_158d0001e08c81:
+  friendly_name: Bedroom Hallway Motion Sensor
+
+sensor.illumination_158d0001e08c81:
+  friendly_name: Bedroom Hallway Illimunation Sensor
+
+# Kitchen
+
+binary_sensor.motion_sensor_158d0001e08c62:
+ friendly_name: Kitchen Motion Sensor
+
+sensor.illumination_158d0001e08c62:
+  friendly_name: Kitchen Illimunation Sensor
+
+light.kitchen_led_strip:
+  friendly_name: Подстветка
+  
+
+# Living Room
+script.sony_bravia_tv_ps4:
+  icon: mdi:timelapse
+  can_cancel: false
+
+switch.wall_switch_right_158d000215287d:
+  friendly_name: Свет над телевизором
+  icon: mdi:lightbulb-outline
+  
+switch.wall_switch_left_158d000215287d:
+  friendly_name: Свет над столом
+  icon: mdi:lightbulb-outline
+
+light.living_room_tv_light_left:
+  friendly_name: Свет над ТВ слева
+  icon: mdi:lightbulb-outline
+
+light.living_room_tv_light_right:
+  friendly_name: Свет над ТВ справа
+  icon: mdi:lightbulb-outline
+
+light.living_room_tv_lights:
+  friendly_name: Свет над ТВ
+  icon: mdi:lightbulb-outline
+
+light.living_room_table_light:
+  friendly_name: Свет над Столом
+  icon: mdi:lightbulb-outline
+
+light.living_room_lights:
+  friendly_name: Свет
+  icon: mdi:lightbulb-outline
+
+# Bedroom
+light.bedroom_closet_led_strip:
+  friendly_name: Подстветка шкаф центр
+  icon: mdi:lightbulb-outline
+  
+# Bathroom
+light.bathroom:
+  friendly_name: Свет
+  icon: mdi:lightbulb-outline
+
+binary_sensor.door_window_sensor_158d000237c961:
+  friendly_name: Ванная
+  icon: mdi:door

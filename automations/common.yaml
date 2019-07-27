@@ -1,0 +1,8 @@
+- alias: Turn on all automations
+  trigger:
+    - platform: homeassistant
+      event: start
+  action:
+    - service: homeassistant.turn_on
+      data:
+        entity_id: group.all_automations
