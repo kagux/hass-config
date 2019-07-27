@@ -1,0 +1,43 @@
+turn_on_light_with_timer:
+  sequence:
+    - condition: or
+      conditions:
+        - condition: template
+          value_template: "{{ is_state(entity, 'on') }}"
+        - condition: template
+          value_template: "{{ lux < 10 }}"
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity }}"
+        brightness: >
+          {{ states(brightness_input_id) | int * 2.55 | round(0) }}
+    - service: timer.cancel
+      data_template:
+        entity_id: "{{ timer_id }}"
+    - service: timer.start
+      data_template:
+        entity_id: "{{ timer_id }}"
+        duration: >
+          {{ states(duration_input_id) | int | timestamp_custom('%X',false) }}
+
+adjust_brightness:
+  sequence:
+    - condition: template 
+      value_template: "{{ is_state(entity, 'on') }}"
+    - service: light.turn_on
+      data_template:
+        entity_id: "{{ entity }}"
+        brightness: >
+          {{ states(brightness_input_id) | int * 2.55 | round(0) }}
+
+day_night_dim:
+  sequence:
+    - service: input_number.set_value
+      data_template:
+        entity_id: "{{ brightness_input_id }}"
+        value: >-
+          {% if is_state('binary_sensor.is_bedtime', 'on') %}
+            {{ night }}
+          {% else %}
+            {{ day }}
+          {% endif %}
