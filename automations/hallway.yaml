@@ -1,4 +1,4 @@
-- alias: Turn on hallway lights when motion detected in the hallway
+- alias: Turn on hallway lights when motion detected
   trigger:
     - platform: mqtt
       topic: aqara/motion/hallway_door_motion/status
@@ -10,7 +10,7 @@
     - service: script.turn_on_light_with_timer
       data_template:
         entity: light.hallway
-        lux: "{{ sensor.illumination_158d0001e0b206 }}"
+        illumination_sensor_id: sensor.illumination_158d0001e0b206
         brightness_input_id: input_number.hallway_lights_brightness
         duration_input_id: input_number.hallway_lights_duration
         timer_id: timer.hallway_lights_timer

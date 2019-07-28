@@ -5,7 +5,7 @@ turn_on_light_with_timer:
         - condition: template
           value_template: "{{ is_state(entity, 'on') }}"
         - condition: template
-          value_template: "{{ lux < 10 }}"
+          value_template: "{{ (states(illumination_sensor_id) | int) < 20 }}"
     - service: light.turn_on
       data_template:
         entity_id: "{{ entity }}"

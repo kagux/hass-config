@@ -2,27 +2,14 @@
   trigger:
     - platform: mqtt
       topic: aqara/motion/entrance_motion/lux
-  condition:
-    condition: or
-    conditions:
-      - condition: state
-        entity_id: light.entrance
-        state: 'on'
-      - condition: template
-        value_template: "{{ (trigger.payload | int) < 10 }}"
   action:
-    - service: light.turn_on
+    - service: script.turn_on_light_with_timer
       data_template:
-        entity_id: light.entrance
-        brightness: >
-          {{ states('input_number.entrance_lights_brightness') | int * 2.55 | round(0) }}
-    - service: timer.cancel
-      entity_id: timer.entrance_lights_timer
-    - service: timer.start
-      data_template:
-        entity_id: timer.entrance_lights_timer
-        duration: >
-          {{ states('input_number.entrance_lights_duration') | int | timestamp_custom('%X',false) }}
+        entity: light.entrance
+        illumination_sensor_id: sensor.illumination_158d0001e0ad52
+        brightness_input_id: input_number.entrance_lights_brightness
+        duration_input_id: input_number.entrance_lights_duration
+        timer_id: timer.entrance_lights_timer
 
 - alias: Turn off entrance lights when timer expires
   trigger:
@@ -38,16 +25,11 @@
   trigger:
     platform: state
     entity_id: input_number.entrance_lights_brightness
-  condition:
-    - condition: state 
-      entity_id: light.entrance
-      state: 'on'
   action:
-    - service: light.turn_on
-      data_template:
-        entity_id: light.entrance
-        brightness: >
-          {{ states('input_number.entrance_lights_brightness') | int * 2.55 | round(0) }}
+    service: script.adjust_brightness
+    data:
+      entity: light.entrance
+      brightness_input_id: input_number.entrance_lights_brightness
 
 - alias: Adjust entrance lights brightness
   trigger:
@@ -56,14 +38,8 @@
     - platform: homeassistant
       event: start
   action:
-    - service: input_number.set_value
-      data_template:
-        entity_id: input_number.entrance_lights_brightness
-        value: >-
-          {% if is_state('binary_sensor.is_bedtime', 'on') %}
-            10
-          {% else %}
-            60
-          {% endif %}
-
-  
+    - service: script.day_night_dim
+      data:
+        brightness_input_id: input_number.entrance_lights_brightness
+        day: 70
+        night: 10
