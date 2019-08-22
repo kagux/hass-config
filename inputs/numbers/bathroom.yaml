@@ -1,8 +1,8 @@
 bathroom_lights_duration:
   name: Таймер
   icon: mdi:clock-start
-  initial: 60
-  min: 60
+  initial: 120
+  min: 120
   max: 600
   step: 10
   unit_of_measurement: c

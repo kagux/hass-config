@@ -16,4 +16,4 @@ bedroom_closet_lights_timer:
 
 bathroom_lights_timer:
   name: Выключение через
-  duration: 00:01:00
+  duration: 00:02:00

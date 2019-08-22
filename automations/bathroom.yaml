@@ -1,3 +1,60 @@
+- alias: Turn on bathroom music on motion
+  trigger:
+    - platform: state
+      entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+      to: '8'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000237c961
+      to: 'on'
+  condition:
+    - condition: template
+      value_template: "{{ not is_state('media_player.living_room_mini', 'playing') }}"
+  action:
+    - service: media_player.play_media
+      entity_id: media_player.living_room_mini
+      data:
+        media_content_id: http://62.210.114.63:8060/relay.mp3
+        media_content_type: audio/mpeg
+    - service: timer.cancel
+      entity_id: timer.bathroom_lights_timer
+    - service: timer.start
+      data_template:
+        entity_id: timer.bathroom_lights_timer
+        duration: >
+          {{ states('input_number.bathroom_lights_duration') | int | timestamp_custom('%X',false) }}
+          
+- alias: Keep playing musin on motion
+  trigger:
+    - platform: state
+      entity_id: sensor.aeotec_zw100_multisensor_6_burglar
+      to: '8'
+    - platform: state
+      entity_id: binary_sensor.door_window_sensor_158d000237c961
+      to: 'on'
+  condition:
+    - condition: state 
+      entity_id: media_player.living_room_mini
+      state: 'playing'
+  action:
+    - service: timer.cancel
+      entity_id: timer.bathroom_lights_timer
+    - service: timer.start
+      data_template:
+        entity_id: timer.bathroom_lights_timer
+        duration: >
+          {{ states('input_number.bathroom_lights_duration') | int | timestamp_custom('%X',false) }}
+
+- alias: Turn off bathroom music
+  trigger:
+    platform: event
+    event_type: timer.finished
+    event_data:
+       entity_id: timer.bathroom_lights_timer
+  action:
+    service: media_player.media_stop
+    entity_id: media_player.living_room_mini
+
+
 # - alias: Turn off bathroom lights
 #   trigger:
 #     - platform: event

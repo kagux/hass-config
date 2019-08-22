@@ -7,9 +7,9 @@
       topic: aqara/motion/entrance_motion/status
       payload: motion
   action:
-    - service: script.turn_on_light_with_timer
+    - service: python_script.turn_on_light_with_timer
       data_template:
-        entity: light.hallway
+        entity_id: light.hallway
         illumination_sensor_id: sensor.illumination_158d0001e0b206
         brightness_input_id: input_number.hallway_lights_brightness
         duration_input_id: input_number.hallway_lights_duration
@@ -30,9 +30,9 @@
     platform: state
     entity_id: input_number.hallway_lights_brightness
   action:
-    service: script.adjust_brightness
+    service: python_script.adjust_light_brightness
     data:
-      entity: light.hallway
+      entity_id: light.hallway
       brightness_input_id: input_number.hallway_lights_brightness
 
 - alias: Adjust hallway lights brightness
@@ -42,7 +42,7 @@
     - platform: homeassistant
       event: start
   action:
-    - service: script.day_night_dim
+    - service: python_script.day_night_light_dim
       data:
         brightness_input_id: input_number.hallway_lights_brightness
         day: 20

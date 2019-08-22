@@ -1,12 +1,12 @@
 - alias: Turn on kitchen lights when motion detected
   trigger:
     - platform: mqtt
-      topic: aqara/motion/kitchen_motion/motion
+      topic: aqara/motion/kitchen_motion/status
       payload: motion
   action:
-    - service: script.turn_on_light_with_timer
+    - service: python_script.turn_on_light_with_timer
       data_template:
-        entity: light.kitchen_led_strip
+        entity_id: light.kitchen_led_strip
         illumination_sensor_id: sensor.illumination_158d0001e08c62
         brightness_input_id: input_number.kitchen_lights_brightness
         duration_input_id: input_number.kitchen_lights_duration
@@ -27,9 +27,9 @@
     platform: state
     entity_id: input_number.kitchen_lights_brightness
   action:
-    service: script.adjust_brightness
+    service: python_script.adjust_light_brightness
     data:
-      entity: light.kitchen_led_strip
+      entity_id: light.kitchen_led_strip
       brightness_input_id: input_number.kitchen_lights_brightness
 
 - alias: Adjust kitchen lights brightness
@@ -39,7 +39,7 @@
     - platform: homeassistant
       event: start
   action:
-    - service: script.day_night_dim
+    - service: python_script.day_night_light_dim
       data:
         brightness_input_id: input_number.kitchen_lights_brightness
         day: 70
